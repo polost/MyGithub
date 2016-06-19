@@ -1,7 +1,7 @@
 package headhole.page;
 
+import headhole.dao.GenericDao;
 import headhole.entity.Story;
-import headhole.factory.DaoFactory;
 import headhole.tool.IoScanner;
 
 import java.util.Date;
@@ -32,7 +32,7 @@ public class StoryEditPage extends Page{
 		
 		Story story = new Story(StoryName,StoryTime,"zjs",StoryContext,StoryBrief);
 		try {
-			if(false == DaoFactory.getInstance().doCreate(story))
+			if(false == (new GenericDao(Story.class)).doCreate(story))
 			{
 				System.out.println("π  ¬ÃÌº” ß∞‹");
 			}

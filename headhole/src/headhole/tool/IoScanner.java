@@ -1,6 +1,7 @@
 package headhole.tool;
 
 import headhole.entity.Story;
+import headhole.entity.Topic;
 
 import java.util.List;
 import java.util.Scanner;
@@ -52,6 +53,24 @@ public class IoScanner {
 		for(int storyIndex = 0; storyIndex < storys.size(); storyIndex++)
 		{
 			ScannerOutputStoryBrief(storys.get(storyIndex));
+		}
+	}
+	
+	public static void ScannerOutputTopicBrief(Topic topic)
+	{
+		System.out.println("-----------主题编号"+topic.getTopicId()+"-----------");
+		System.out.println("主题名："+topic.getTopicName());
+		System.out.println("日期："+topic.getTopicTime());
+		System.out.println("作者："+topic.getTopicEditor());
+		System.out.println(topic.getTopicBrief());
+		System.out.println("-------------------------");
+	}
+	
+	public static void ScannerOutputTopicList(List<Topic> topics)
+	{
+		for(int topicIndex = 0; topicIndex < topics.size(); topicIndex++)
+		{
+			ScannerOutputTopicBrief(topics.get(topicIndex));
 		}
 	}
 }

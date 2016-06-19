@@ -4,11 +4,26 @@ import java.sql.Date;
 
 public final class Story {
 	private int StoryId;
+	private int TopicId;
 	private String StoryName;
 	private Date StoryTime;
 	private String StoryEditor;
 	private String StoryContext;
 	private String StoryBrief;
+	
+	public Story()
+	{}
+	
+	public Story(int TopicId, int StoryId, String StoryName, Date StoryTime, String StoryEditor, String StoryContext, String StoryBrief)
+	{
+		this.TopicId = TopicId;
+		this.StoryId = StoryId;
+		this.StoryName = StoryName;
+		this.StoryTime = StoryTime;
+		this.StoryEditor = StoryEditor;
+		this.StoryContext = StoryContext;
+		this.StoryBrief = StoryBrief;
+	}
 	
 	public Story(String StoryName, Date StoryTime, String StoryEditor, String StoryContext, String StoryBrief)
 	{
@@ -48,6 +63,16 @@ public final class Story {
 	public void setStoryId(int StoryId)
 	{
 		this.StoryId = StoryId;
+	}
+	
+	public int getTopicId()
+	{
+		return TopicId;
+	}
+	
+	public void setTopicId(int TopicId)
+	{
+		this.TopicId = TopicId;
 	}
 	
 	public String getStoryName()

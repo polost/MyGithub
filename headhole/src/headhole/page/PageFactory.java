@@ -33,6 +33,14 @@ public class PageFactory {
 		{
 			page = new StoryEditPage();
 		}
+		else if(PageName.equals("onetopicpage"))
+		{
+			page = new OneTopicPage();
+		}
+		else if(PageName.equals("topiceditpage"))
+		{
+			page = new OneStoryPage();
+		}
 		return page;
 	}
 }

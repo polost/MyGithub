@@ -1,38 +1,40 @@
 package headhole.page;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
+import headhole.dao.GenericDao;
 import headhole.entity.Story;
-import headhole.factory.DaoFactory;
 import headhole.tool.IoScanner;
 
 public class StoryPage extends Page{
+	private List<Story> storys = null;
+	
 	public StoryPage()
 	{
-		InitPage();
+		try {
+			storys = (List<Story>) (new GenericDao(Story.class)).findAll();
+			//storys = DaoFactory.getInstance().findAll();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		printStoryList();
 	}
+	
+	public StoryPage(List<Story> storys)
+	{
+		this.storys = storys;
+		printStoryList();
+	}
+	
 	private void printStoryList()
 	{
 		System.out.println("***************************\n");
 		System.out.println("\t π  ¬¡–±Ì£∫\n");
 		System.out.println("***************************");
 
-		List<Story> storys = null;
-		try {
-			storys = DaoFactory.getInstance().findAll();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		IoScanner.ScannerOutputStoryList(storys);
 
-	}
-	
-	private void InitPage()
-	{
-		printStoryList();
 	}
 	
 	public void ActivePage()
@@ -45,7 +47,7 @@ public class StoryPage extends Page{
 			if(operation.equals("add"))
 			{
 				addStory();
-				InitPage();
+				printStoryList();
 			}
 			else if(operation.equals("mod"))
 			{
@@ -54,12 +56,12 @@ public class StoryPage extends Page{
 			else if(operation.equals("del"))
 			{
 				delStory();
-				InitPage();
+				printStoryList();
 			}
 			else if(operation.equals("dsp"))
 			{
 				dspStory();
-				InitPage();
+				printStoryList();
 			}
 			else if(operation.equals("back"))
 			{
@@ -100,7 +102,8 @@ public class StoryPage extends Page{
 			else if(storyId > 0)
 			{
 				try {
-					DaoFactory.getInstance().doDelete(storyId);
+					(new GenericDao(Story.class)).doDelete(storyId);
+					//DaoFactory.getInstance().doDelete(storyId);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -131,7 +134,9 @@ public class StoryPage extends Page{
 			{
 				Story story = null;
 				try {
-					story = DaoFactory.getInstance().findById(storyId);
+					//story = (Story)(new GenericDao(Story.class)).findByPara(storyId,"StoryId");
+					story = (Story)(new GenericDao(Story.class)).findById(storyId);
+					//story = DaoFactory.getInstance().findById(storyId);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

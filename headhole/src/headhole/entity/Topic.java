@@ -9,6 +9,11 @@ public class Topic {
 	private String TopicEditor;
 	private String TopicBrief;
 	
+	public Topic()
+	{
+		
+	}
+	
 	public Topic(String TopicName, Date TopicTime, String TopicEditor, String TopicBrief)
 	{
 		this.TopicName = TopicName;
