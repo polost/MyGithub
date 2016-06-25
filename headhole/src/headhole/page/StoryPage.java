@@ -19,12 +19,14 @@ public class StoryPage extends Page{
 			e.printStackTrace();
 		}
 		printStoryList();
+		ActivePage();
 	}
 	
 	public StoryPage(List<Story> storys)
 	{
 		this.storys = storys;
 		printStoryList();
+		ActivePage();
 	}
 	
 	private void printStoryList()
@@ -37,7 +39,7 @@ public class StoryPage extends Page{
 
 	}
 	
-	public void ActivePage()
+	private void ActivePage()
 	{
 		do
 		{
@@ -78,10 +80,26 @@ public class StoryPage extends Page{
 	
 	private void addStory()
 	{
-		PageFactory pageFactory = new PageFactory();
-		Page page = null;
-		page = pageFactory.CreatePage("storyeditpage");
-		page.ActivePage();
+		do
+		{
+			System.out.println("请输入想要添加故事的主题编号，输入0返回上一级");
+			int topicId = IoScanner.ScannerInputIndex();
+			if(topicId == 0)
+			{
+				System.out.println("返回上一级");
+				return;
+			}
+			else if(topicId == -1)
+			{
+				System.out.println("输入有误，请重新输入");
+			}
+			else if(topicId > 0)
+			{
+				StoryEditPage storyEditPage = new StoryEditPage(topicId);
+				storyEditPage.ActivePage();
+			}
+		}
+		while(true);
 	}
 	
 	private void delStory()
@@ -141,10 +159,7 @@ public class StoryPage extends Page{
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				PageFactory pageFactory = new PageFactory();
-				Page page = null;
-				page = pageFactory.CreatePage("onestorypage");
-				page.ActivePage(story);
+				new OneStoryPage(story);
 				printStoryList();
 			}
 			

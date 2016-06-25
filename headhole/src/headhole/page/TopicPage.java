@@ -10,6 +10,7 @@ public class TopicPage extends Page {
 	public TopicPage()
 	{
 		InitPage();
+		ActivePage();
 	}
 	
 	private void printTopicList()
@@ -33,7 +34,7 @@ public class TopicPage extends Page {
 		printTopicList();
 	}
 	
-	public void ActivePage()
+	private void ActivePage()
 	{
 		do
 		{
@@ -74,17 +75,15 @@ public class TopicPage extends Page {
 	
 	private void addTopic()
 	{
-		PageFactory pageFactory = new PageFactory();
-		Page page = null;
-		page = pageFactory.CreatePage("storyeditpage");
-		page.ActivePage();
+		TopicEditPage topicEditPage = new TopicEditPage();
+		topicEditPage.ActivePage();
 	}
 	
 	private void delTopic()
 	{
 		do
 		{
-			System.out.println("请输入想要删除的故事编号，输入0返回上一级");
+			System.out.println("请输入想要删除的主题编号，输入0返回上一级");
 			int topicId = IoScanner.ScannerInputIndex();
 			if(topicId == 0)
 			{
@@ -135,10 +134,8 @@ public class TopicPage extends Page {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				PageFactory pageFactory = new PageFactory();
-				Page page = null;
-				page = pageFactory.CreatePage("onetopicpage");
-				page.ActivePage(topic);
+				OneTopicPage oneTopicPage = new OneTopicPage(topic);
+				oneTopicPage.ActivePage();
 				printTopicList();
 			}
 			

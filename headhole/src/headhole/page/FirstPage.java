@@ -23,9 +23,6 @@ public class FirstPage extends Page{
 	
 	public void ActivePage()
 	{
-		PageFactory pageFactory = new PageFactory();
-		Page page = null;
-		
 		do
 		{
 			String InputChoice = IoScanner.ScannerInputString();
@@ -40,22 +37,21 @@ public class FirstPage extends Page{
 						System.exit(1);
 						break;
 					case 1:
-						page = pageFactory.CreatePage("storypage");
+						new StoryPage();
 						break;
 					case 2:
-						page = pageFactory.CreatePage("topicpage");
+						new TopicPage();
 						break;
 					case 3:
-						page = pageFactory.CreatePage("searchpage");
+						new SearchPage();
 						break;
 					case 4:
-						page = pageFactory.CreatePage("loginpage");
+						new LoginPage();
 						break;
 					default:
 						System.out.println("输入有误，请重新输入");
 						continue;
 				}
-				page.ActivePage();
 				InitPage();
 			}
 		}

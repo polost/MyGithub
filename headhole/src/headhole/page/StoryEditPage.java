@@ -7,8 +7,10 @@ import headhole.tool.IoScanner;
 import java.util.Date;
 
 public class StoryEditPage extends Page{
-	public StoryEditPage()
+	private int TopicId = 0;
+	public StoryEditPage(int TopicId)
 	{
+		this.TopicId = TopicId;
 		InitPage();
 	}
 	
@@ -30,7 +32,7 @@ public class StoryEditPage extends Page{
 		java.util.Date utilDate=new Date();
 		java.sql.Date StoryTime=new java.sql.Date(utilDate.getTime());
 		
-		Story story = new Story(StoryName,StoryTime,"zjs",StoryContext,StoryBrief);
+		Story story = new Story(StoryName,StoryTime,"zjs",StoryContext,StoryBrief,this.TopicId);
 		try {
 			if(false == (new GenericDao(Story.class)).doCreate(story))
 			{

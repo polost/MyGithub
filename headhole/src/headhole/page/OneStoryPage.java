@@ -5,17 +5,18 @@ import headhole.tool.IoScanner;
 
 public class OneStoryPage extends Page{
 	private Story story;
-	public OneStoryPage()
+	public OneStoryPage(Story story)
 	{
+		this.story = story;
+		InitPage();
+		ActivePage();
 	}
 	private void InitPage()
 	{
 		IoScanner.ScannerOutputStory(story);
 	}
-	public void ActivePage(Story story)
+	private void ActivePage()
 	{
-		this.story = story;
-		InitPage();
 		System.out.println("输入0返回上一级");
 		do
 		{

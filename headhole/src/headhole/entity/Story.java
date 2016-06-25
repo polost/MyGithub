@@ -14,10 +14,9 @@ public final class Story {
 	public Story()
 	{}
 	
-	public Story(int TopicId, int StoryId, String StoryName, Date StoryTime, String StoryEditor, String StoryContext, String StoryBrief)
+	public Story(String StoryName, Date StoryTime, String StoryEditor, String StoryContext, String StoryBrief, int TopicId)
 	{
 		this.TopicId = TopicId;
-		this.StoryId = StoryId;
 		this.StoryName = StoryName;
 		this.StoryTime = StoryTime;
 		this.StoryEditor = StoryEditor;

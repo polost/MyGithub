@@ -10,8 +10,10 @@ import headhole.tool.IoScanner;
 
 public class OneTopicPage extends Page{
 	private Topic topic;
-	public OneTopicPage()
+	public OneTopicPage(Topic topic)
 	{
+		this.topic = topic;
+		InitPage();
 	}
 	private void InitPage()
 	{
@@ -28,15 +30,10 @@ public class OneTopicPage extends Page{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		PageFactory pageFactory = new PageFactory();
-		Page page = pageFactory.CreatePage("storypage");
-		page.ActivePage();
-		//IoScanner.ScannerOutputStoryList(storys);
+		new StoryPage(storys);
 	}
-	public void ActivePage(Topic topic)
+	public void ActivePage()
 	{
-		this.topic = topic;
-		InitPage();
 		System.out.println("输入0返回上一级");
 		do
 		{

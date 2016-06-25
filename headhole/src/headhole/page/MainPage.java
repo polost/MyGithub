@@ -13,9 +13,8 @@ public class MainPage {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		PageFactory pageFactory = new PageFactory();
-		Page page = pageFactory.CreatePage("firstpage");
-		page.ActivePage();
+		FirstPage firstPage = new FirstPage();
+		firstPage.ActivePage();
 	}
 	
 	
